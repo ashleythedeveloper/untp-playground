@@ -16,7 +16,7 @@ const SCHEMA_URLS = {
   DigitalConformityCredential:
     "https://jargon.sh/user/unece/ConformityCredential/v/0.5.0/artefacts/jsonSchemas/DigitalConformityCredential.json?class=DigitalConformityCredential",
   DigitalTraceabilityEvent:
-    "https://jargon.sh/user/unece/DigitalTraceabilityEvent/v/0.5.0/artefacts/jsonSchemas/DigitalTraceabilityEvent.json?class=DigitalTraceabilityEvent",
+    "https://jargon.sh/user/unece/traceabilityEvents/v/0.5.0/artefacts/jsonSchemas/DigitalTraceabilityEvent.json?class=DigitalTraceabilityEvent",
   DigitalFacilityRecord:
     "https://jargon.sh/user/unece/DigitalFacilityRecord/v/0.5.0/artefacts/jsonSchemas/DigitalFacilityRecord.json?class=DigitalFacilityRecord",
   DigitalIdentityAnchor:

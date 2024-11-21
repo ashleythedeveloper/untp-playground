@@ -166,6 +166,14 @@ export const ErrorDialog = ({ errors = [], className = "" }) => {
                                 </code>
                               </p>
                             )}
+                            {mainError.keyword === "type" && (
+                              <p>
+                                Expected type:{" "}
+                                <code className="px-1 py-0.5 bg-gray-100 rounded">
+                                  {mainError.params.type}
+                                </code>
+                              </p>
+                            )}
                           </div>
 
                           {fixExample && (
@@ -202,6 +210,8 @@ export const ErrorDialog = ({ errors = [], className = "" }) => {
                               ? "Choose one of the values shown above."
                               : mainError.keyword === "required"
                               ? `Add the missing "${mainError.params.missingProperty}" field.`
+                              : mainError.keyword === "type"
+                              ? `Change the value to match the expected type: ${mainError.params.type}.`
                               : "Make sure your input matches the required format."}
                           </div>
                         </div>

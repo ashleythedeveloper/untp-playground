@@ -13,6 +13,21 @@ export function CredentialUploader({
 }) {
   const onDrop = useCallback(
     (acceptedFiles: File[]) => {
+      const validExtensions = [".json", ".jwt", ".txt"];
+
+      console.log("acceptedFiles", acceptedFiles);
+      const invalidFiles = acceptedFiles.filter(
+        (file) =>
+          !validExtensions.some((ext) => file.name.toLowerCase().endsWith(ext))
+      );
+
+      if (invalidFiles.length > 0 || acceptedFiles.length === 0) {
+        toast.error(
+          `Invalid file format. Please upload only .json, .jwt, or .txt files.`
+        );
+        return;
+      }
+
       acceptedFiles.forEach((file) => {
         const reader = new FileReader();
         reader.onload = async (e) => {
@@ -20,22 +35,24 @@ export function CredentialUploader({
             const text = e.target?.result as string;
             let json;
 
-            // Check if the text is a JWT (base64 encoded string)
-            if (text.split(".").length === 3) {
+            // Only try JWT parsing if the file extension is .jwt or .txt
+            if (file.name.endsWith(".jwt") || file.name.endsWith(".txt")) {
               try {
                 json = jwtDecode(text);
               } catch (jwtError) {
                 console.log("Error decoding JWT:", jwtError);
-                toast.error("Invalid JWT format");
+                toast.error(
+                  "Invalid JWT format - Please provide a file containing a valid JWT token"
+                );
                 return;
               }
             } else {
-              // Try parsing as regular JSON
+              // For JSON files only
               try {
                 json = JSON.parse(text);
               } catch (jsonError) {
                 console.log("Error parsing JSON:", jsonError);
-                toast.error("Invalid JSON format");
+                toast.error("Invalid format - File must contain valid JSON");
                 return;
               }
             }
@@ -43,7 +60,9 @@ export function CredentialUploader({
             onCredentialUpload(json);
           } catch (error) {
             console.log("Error processing credential:", error);
-            toast.error("Failed to process credential");
+            toast.error(
+              "Failed to process credential - Please ensure the file contains valid data"
+            );
           }
         };
         reader.readAsText(file);
