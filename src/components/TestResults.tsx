@@ -291,7 +291,7 @@ export function TestResults({
       const cached = validatedCredentialsRef.current[credentialType];
 
       // Skip if this credential has already been validated
-      if (cached?.credential.decoded === credential.decoded) {
+      if (cached?.credential.original === credential.original) {
         return;
       }
 
