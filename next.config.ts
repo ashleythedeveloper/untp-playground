@@ -3,26 +3,28 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   basePath: '/untp-playground',
   
-  trailingSlash: true,
+  trailingSlash: false,
   
   assetPrefix: '/untp-playground',
   
-  images: {
-    path: '/untp-playground/_next/image',
+  async rewrites() {
+    return [
+      {
+        source: '/untp-playground/untp-playground/:path*',
+        destination: '/untp-playground/:path*',
+      }
+    ];
   },
   
-  async rewrites() {
-    return {
-      beforeFiles: [
-        {
-          source: '/untp-playground/:path*',
-          destination: '/:path*',
-        },
-      ],
-      afterFiles: [],
-      fallback: [],
-    };
-  },
+  async redirects() {
+    return [
+      {
+        source: '/untp-playground/untp-playground/:path*',
+        destination: '/untp-playground/:path*',
+        permanent: true,
+      }
+    ];
+  }
 };
 
 export default nextConfig;
