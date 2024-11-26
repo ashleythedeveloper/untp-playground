@@ -41,6 +41,13 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 We use Pulumi and GitHub actions to deploy the app. Please note that basePath is set to `/untp-playground`
 
+GitHub cicd workflow requires the following secrets:
+1. PULUMI_AWS_SECRET_KEY_ID
+1. PULUMI_AWS_SECRET_ACCESS_KEY
+1. PULUMI_CONFIG_PASSPHRASE
+
+AWS credentials will be replaced with OIDC role in AWS account, Pulumi config encryption will be changed to awskms.
+
 End-points:
 1. test - https://test-playground.untp.showthething.com/untp-playground
 1. production - https://test.uncefact.org/untp-playground
