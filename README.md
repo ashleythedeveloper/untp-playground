@@ -34,3 +34,19 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+
+
+## untp-playground
+
+We use Pulumi and GitHub actions to deploy the app. Please note that basePath is set to `/untp-playground`
+
+End-points:
+1. test - https://test-playground.untp.showthething.com/untp-playground
+1. production - https://test.uncefact.org/untp-playground
+
+`next` branch is getting automatically deployed to test, tag is manually deployed to production.
+In future production enddpoint will be replaced with a production url, and current endpoint will become test.
+
+
+The production build is configured using Docker image https://nextjs.org/docs/pages/building-your-application/deploying#docker-image
