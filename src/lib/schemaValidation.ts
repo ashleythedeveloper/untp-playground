@@ -39,7 +39,7 @@ export async function validateCredentialSchema(credential: any): Promise<{
     const schemaUrl = SCHEMA_URLS[credentialType as keyof typeof SCHEMA_URLS];
 
     if (!schemaCache.has(schemaUrl)) {
-      const proxyUrl = `/api/schema?url=${encodeURIComponent(schemaUrl)}`;
+      const proxyUrl = `/untp-playground/api/schema?url=${encodeURIComponent(schemaUrl)}`;
       const schemaResponse = await fetch(proxyUrl);
 
       if (!schemaResponse.ok) {
