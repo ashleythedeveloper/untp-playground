@@ -8,4 +8,14 @@ const nextConfig: NextConfig = {
   assetPrefix: '/untp-playground',
 };
 
+module.exports = {
+    // ... rest of the configuration.
+    basePath: '/untp-playground',
+  
+  trailingSlash: false,
+  
+  assetPrefix: '/untp-playground',
+    output: "standalone",
+  };
+
 export default nextConfig;
